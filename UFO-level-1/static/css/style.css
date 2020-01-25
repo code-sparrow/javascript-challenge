@@ -3,6 +3,10 @@
   font-family: Ubuntu, sans-serif;
 }
 
+#main_grad {
+  background: repeating-radial-gradient(#705f5a 25%, #38334e 30%, #5c3d35 45%);
+}
+
 html,
 body {
   height: 100%;
@@ -54,8 +58,10 @@ body {
 
 /* Adding styles to the aside and filter form */
 .ufo-form {
+  
   margin-top: 50px;
 }
+
 
 .filters .panel-body {
   padding: 0;
@@ -91,14 +97,18 @@ select {
   margin-top: 50px;
 }
 
+#text_outline {text-shadow:-2px -2px 0 rgb(38, 40, 82), 2px -2px 0 rgb(38, 40, 82),-2px 2px 0 rgb(38, 40, 82),2px 2px 0 rgb(38, 40, 82);
+}
+
 /* The styles for the parallax */
 .hero {
+  font-family: 'Bangers', cursive;
   position: relative;
-  height: 550px;
+  height: 570px;
   padding: 20px;
   margin: 0;
   background: black;
-  background-image: url("../images/nasa.jpg");
+  background-image: url("../images/ufo.jpg");
   background-attachment: fixed;
   background-position: bottom center;
   background-size: cover;
@@ -171,11 +181,13 @@ select {
 
   #table-area td {
     font-size: 1.25em;
+    font-family: Ubuntu, sans-serif;
   }
 
   #table-area tbody td {
     display: block;
     text-align: center;
+    font-family: Ubuntu, sans-serif;
   }
 
   #table-area tbody td::before {
@@ -184,6 +196,7 @@ select {
     font-weight: bold;
     text-align: center;
     content: attr(data-th);
+    font-family: Ubuntu, sans-serif;
   }
 
   .hero h1 {
