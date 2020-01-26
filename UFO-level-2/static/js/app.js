@@ -11,31 +11,37 @@ button.on("click", () => {
     // prevent refresh
     d3.event.preventDefault();
 
-    // Select the input element and get the raw HTML node
-    let inputElement = d3.select("#datetime");
+    // key names used in buttons
+    let cols = ["datetime", "city", "state", "country", "shape"];
 
-    // Get the value property of the input element
-    let inputValue = inputElement.property("value");
+    // Select the input elements and get the raw HTML node, put in array
+    let inputElements = [];
+    cols.forEach(col => inputElements.push(d3.select("#" + col)));
 
-    console.log(inputValue);
-    console.log(sightings);
+    // Get the value properties of the input elements
+
+    let inputValues = [];
+    for(i = 0; i < inputElements.length; i++){
+            inputValues.push(inputElements[i].property("value"));
+    };
+    console.log(inputValues);
+    let filter = function(data) {
+        return data[cols[0]] === inputValues[0] || data[cols[1]] === inputValues[1] || data[cols[2]] === inputValues[2] || data[cols[3]] === inputValues[3] || data[cols[4]] === inputValues[4];
+    };
+
 
     // search data based on the data that was input by user
-    let filteredData = sightings.filter(sighting => sighting.datetime === inputValue);
+    let filteredData = sightings.filter(sighting => filter(sighting));
     console.log(filteredData);
     // empty html template string
     let html = ``;
 
-    if(inputValue.length === 0) {
-        // if nothing entered in search box, notify
-        html += `<tr><th colspan="7">`;
-        html += `<h3>No search parameters provided. Please enter a Date in the Search Box.</h3>`;
-        html += `</th></tr>`;
-    } else if(filteredData.length === 0) {
+
+    if(filteredData.length === 0) {
 
         // if no results returned in search, notify
         html += `<tr><th colspan="7">`;
-        html += `<h3>No results found for your seach criteria "${inputValue}"</h3>`;
+        html += `<h3>No results found for your seach criteria</h3>`;
         html += `</th></tr>`;
     } else {
 
